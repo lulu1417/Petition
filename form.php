@@ -1,8 +1,11 @@
-<title>台德建交連署書</title>
-<?php
-include 'style.html';
-$timestamp = 'timestamp';
-?>
+<head>
+    <?php
+    include 'style.html';
+    $timestamp = 'timestamp';
+
+    ?>
+</head>
+
 
 <body>
 <div class="flex-center position-ref full-height">
@@ -12,10 +15,28 @@ $timestamp = 'timestamp';
             ──台德建交連署表單──
         </div>
         <div class="m-b-md">
-            <form name="form1" action="https://epetitionen.bundestag.de/content/epet/registrieren.danke.html" method="post">
+            <form name="form1" action="" method="post">
                 <input type="hidden" name="timestamp" value="<?=$timestamp?>">
                 <p>信箱：<input type="text" name="email"></p>
-                <p>密碼：<input type="password" name="passwort">&nbsp;確認密碼：<input type="password" name="passwort_wiederholen"></p>
+<!--                <div class="row">
+                    <div class="form__field-wrapper col-md-6">
+                        <label for="passwort">Passwort<span class="pwdPflicht">*</span> <a href="#" class="tooltip util-icon--before util-icon--epet-question tipso_style">
+                                <span class="sr-only">Info</span>
+                                <span class="tooltip-content">Ihr Passwort muss aus mindestens 8 Zeichen bestehen. Es muss mindestens je einen Groß- und Kleinbuchstaben sowie eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$) enthalten.</span>
+                            </a></label>
+
+                        <div id="passwort_div" style="padding-left: 0px;" class="strength_wrapper col-md-12"><input autocomplete="off" type="password" id="passwort" class="strength_input" value=""><input type="text" class="strength_input" name="passwort" style="display:none"><div class="strength_meter"><div class="veryweak"><p>very weak</p></div></div><div class="pswd_info" style="display: none;">             <h4>Voraussetzungen zur Wahl Ihres Passworts:</h4>             <ul>             <li data-criterion="capital" class="invalid">mindestens einen Großbuchstaben</li>             <li data-criterion="lowercase" class="valid">mindestens einen Kleinbuchstaben</li>             <li data-criterion="number" class="invalid">mindestens eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$)</li>             <li data-criterion="length" class="invalid">mindestens 8 Zeichen</li>             </ul>             </div></div>
+
+                    </div>
+
+                    <div class="form__field-wrapper col-md-6">
+                        <label for="passwort_wiederholen">Passwort wiederholen<span class="pwdPflicht">*</span></label>
+                        <div id="passwort_wiederholen_div" style="padding-right: 0px;" class="strength_wrapper col-md-12"><input autocomplete="off" type="password" id="passwort_wiederholen" class="strength_input" value=""><input type="text" class="strength_input" name="passwort_wiederholen" style="display:none"><div class="strength_meter"><div><p></p></div></div><div class="pswd_info" style="display: none;">             <h4>Voraussetzungen zur Wahl Ihres Passworts:</h4>             <ul>             <li data-criterion="capital" class="valid">mindestens einen Großbuchstaben</li>             <li data-criterion="lowercase" class="valid">mindestens einen Kleinbuchstaben</li>             <li data-criterion="number" class="valid">mindestens eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$)</li>             <li data-criterion="length" class="invalid">mindestens 8 Zeichen</li>             </ul>             </div></div>
+
+
+                    </div>
+                </div>
+-->                <p>密碼：<input type="password" name="passwort"></p>
                 <div class="warning">
                     <p>*您的密碼必須至少8個字符長</p>
                     <p>*它必須至少包含一個大寫和小寫字母以及一個數字或特殊字符（例如_＃@ * + ?!-$）</p>
@@ -555,6 +576,15 @@ $timestamp = 'timestamp';
                 <p><input type="checkbox" name="datenschutz_ok">我已經閱讀並理解了隱私政策</p>
                 <p> <input type="checkbox" name="nutzungsbed_ok">我同意使用條款</p>
                 <p>----------------------</p>
+                <input type="hidden" name="btAbsendenMitRegistrieren" value="Jetzt registrieren">
+                <input type="hidden" name="_charset_" value="UTF-8">
+                <input type="hidden" name="sectimestamp" value="<?=$timestamp?>">
+                <input type="hidden" name="secinvisible" value="">
+                <input type="hidden" name="JavaScriptEnable" value="true">
+                <input type="hidden" name="clearPwdIfEmpty" value="">
+                <input type="hidden" name="clearPwdWdhlIfEmpty" value="">
+                <input type="hidden" name="sectimestamp" value="<?=$timestamp?>">
+                <input type="hidden" name="secinvisible" value="">
                 <p><input type="submit" name="submit" value="送出">
                     <style>
                         input {padding:5px 15px; background:#CCEEFF; border:0 none;
@@ -582,42 +612,23 @@ $timestamp = 'timestamp';
 </html>
 <?php
 if (isset($_POST[submit])) {
+    unset($_POST[submit]);
+    foreach($_POST as $k => $v){
+        $_POST[$k] = urlencode($v);
+    }
+    $params = $_POST;
+    $params = http_build_query($params, null, '&');
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,            "https://ptsv2.com/t/c6pmo-1570020419/post" );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+    curl_setopt($ch, CURLOPT_POST,           1 );
+    curl_setopt($ch, CURLOPT_POSTFIELDS,     $params);
+    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Origin:https://epetitionen.bundestag.de','Content-Type: application/x-www-form-urlencoded'));
+
+    $result=curl_exec ($ch);
     echo '<div class="success">Added successfully ！</div>';
-    $name = $_POST['name'];
-    $subject = $_POST["subject"];
-    $content = $_POST["content"];
-
-        echo "
-                <script>
-                setTimeout(function(){window.location.href='view.php?name=" . $name . "';},500);
-                </script>";
-
 
 }
 
-//data:method = post, action = ''; name => value
-//email: heaa1417@kimo.com
-//passwort: Abc12345
-//passwort_wiederholen: bc12345A
-//datenschutz_ok: 1
-//nutzungsbed_ok: 1
-//anrede:
-//titel:
-//vorname: PJ
-//nachname: Peng
-//coadresse:
-//str_nr: 6F., No. 5, Ln. 344, Sec. 2, Beimen Rd., North Dist.
-//plz: 704
-//ort: Tainan City
-//land: TW
-//organisation:
-//telefon:
-//btAbsendenMitRegistrieren: Jetzt registrieren
-//_charset_: UTF-8
-//sectimestamp: 1570000951140
-//secinvisible:
-//JavaScriptEnable: true
-//clearPwdIfEmpty:
-//clearPwdWdhlIfEmpty:
-//sectimestamp: 1570000951137
-//secinvisible:
+
