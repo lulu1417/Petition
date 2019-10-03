@@ -1,9 +1,9 @@
 <head>
     <?php
-    include 'style.html';
-    $timestamp = 'timestamp';
-
-    ?>
+include 'style.html';
+$timestamp = time();
+$timestamp2 = $timestamp + 3;
+?>
 </head>
 
 
@@ -15,9 +15,9 @@
             ──台德建交連署表單──
         </div>
         <div class="m-b-md">
-            <form name="form1" action="" method="post">
-                <input type="hidden" name="timestamp" value="<?=$timestamp?>">
-                <p>信箱：<input type="text" name="email"></p>
+            <form name="form1" action="https://epetitionen.bundestag.de/epet/registrieren.form.html" method="post">
+
+                <p>信箱：<input type="text" name="email" value="ad@foxmail.com"></p>
 <!--                <div class="row">
                     <div class="form__field-wrapper col-md-6">
                         <label for="passwort">Passwort<span class="pwdPflicht">*</span> <a href="#" class="tooltip util-icon--before util-icon--epet-question tipso_style">
@@ -36,14 +36,14 @@
 
                     </div>
                 </div>
--->                <p>密碼：<input type="password" name="passwort"></p>
+-->                <p>密碼：<input type="password" name="passwort" value="Abc12345">&nbsp;確認密碼：<input type="password" name="passwort_wiederholen" value="Abc12345"></p>
                 <div class="warning">
                     <p>*您的密碼必須至少8個字符長</p>
                     <p>*它必須至少包含一個大寫和小寫字母以及一個數字或特殊字符（例如_＃@ * + ?!-$）</p>
                 </div>
 
-                <p>--請輸入英文拼音--&nbsp;&nbsp</p>
-                姓：<input size="3" type="text" name="nachname">&nbsp;名：<input size="5" type="text" name="vorname"></p>
+                <p>----------------------</p>
+                姓：<input size="3" type="text" name="nachname" value="林">&nbsp;名：<input size="5" type="text" name="vorname" value="小美"></p>
                 <p>暱稱(非必填)：<input type="text" name="pseudonym"></p>
                 <p>----------------------</p>
                 <p>國家：<select name="land" id="land">
@@ -569,16 +569,16 @@
                     <option value="ZW">ZW - Simbabwe</option>
 
                 </select>
-                <p>郵遞區號：<input size="5" type="text" name="plz">&nbsp;<p>--請輸入英文地址--&nbsp;&nbsp;<a href="https://www.post.gov.tw/post/internet/SearchZone/index.jsp?ID=130112" style="color: #adc4b2">按此翻譯地址</a>
-                <p>縣市：<input type="text"size="30" name="ort">&nbsp;</p>
-                <p>街道：<input type="text"size="50" name="str_nr"></p>
+                <p>郵遞區號：<input size="5" type="text" name="plz" value="900">&nbsp;
+                <p>縣市：<input type="text"size="30" name="ort" value="花蓮市">&nbsp;</p>
+                <p>街道：<input type="text"size="50" name="str_nr" value="北門路一段387巷18號" ></p>
                 <p>----------------------</p>
-                <p><input type="checkbox" name="datenschutz_ok">我已經閱讀並理解了隱私政策</p>
-                <p> <input type="checkbox" name="nutzungsbed_ok">我同意使用條款</p>
+                <p><input type="checkbox" name="datenschutz_ok" value="1">我已經閱讀並理解了隱私政策</p>
+                <p> <input type="checkbox" name="nutzungsbed_ok" value="1">我同意使用條款</p>
                 <p>----------------------</p>
                 <input type="hidden" name="btAbsendenMitRegistrieren" value="Jetzt registrieren">
                 <input type="hidden" name="_charset_" value="UTF-8">
-                <input type="hidden" name="sectimestamp" value="<?=$timestamp?>">
+                <input type="hidden" name="sectimestamp" value="<?=$timestamp2?>">
                 <input type="hidden" name="secinvisible" value="">
                 <input type="hidden" name="JavaScriptEnable" value="true">
                 <input type="hidden" name="clearPwdIfEmpty" value="">
@@ -587,7 +587,7 @@
                 <input type="hidden" name="secinvisible" value="">
                 <p><input type="submit" name="submit" value="送出">
                     <style>
-                        input {padding:5px 15px; background:#CCEEFF; border:0 none;
+                        input {padding:5px 15px; background:#DDDDDD; border:0 none;
                             cursor:pointer;
                             -webkit-border-radius: 5px;
                             font-family: 'Nunito', sans-serif;
@@ -596,7 +596,7 @@
                     <style>
                         input {
                             padding:5px 15px;
-                            background:	#CCEEFF;
+                            background:	#DDDDDD;
                             border:0 none;f
                         cursor:pointer;
                             -webkit-border-radius: 5px;
@@ -611,24 +611,31 @@
 </body>
 </html>
 <?php
-if (isset($_POST[submit])) {
-    unset($_POST[submit]);
-    foreach($_POST as $k => $v){
-        $_POST[$k] = urlencode($v);
-    }
-    $params = $_POST;
-    $params = http_build_query($params, null, '&');
-    $ch = curl_init();
+if (isset($_POST['submit'])) {
+	unset($_POST['submit']);
+	$_POST['passwort_wiederholen'] = $_POST['passwort'];
+	$_POST['telefon'] = '';
+	$_POST['anrede'] = '';
+	$_POST['titel'] = '';
+	$_POST['coadresse'] = '';
+	$_POST['organisation'] = '';
+	$_POST['telefon'] = '';
+	foreach ($_POST as $k => $v) {
+		$_POST[$k] = urlencode($v);
+	}
+	var_dump($_POST);
+	$params = $_POST;
+	$params = http_build_query($params, null, '&');
+	$ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,            "https://ptsv2.com/t/c6pmo-1570020419/post" );
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
-    curl_setopt($ch, CURLOPT_POST,           1 );
-    curl_setopt($ch, CURLOPT_POSTFIELDS,     $params);
-    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Origin:https://epetitionen.bundestag.de','Content-Type: application/x-www-form-urlencoded'));
+	curl_setopt($ch, CURLOPT_URL, "https://epetitionen.bundestag.de/epet/registrieren.form.html");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Origin: https://epetitionen.bundestag.de', 'Content-Type: application/x-www-form-urlencoded', 'Referer: https://epetitionen.bundestag.de/content/epet/registrieren.html'));
 
-    $result=curl_exec ($ch);
-    echo '<div class="success">Added successfully ！</div>';
+	$result = curl_exec($ch);
+	var_dump($result);
 
 }
-
-
