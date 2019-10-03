@@ -15,28 +15,12 @@ $timestamp2 = $timestamp + 3;
             ──台德建交連署表單──
         </div>
         <div class="m-b-md">
-            <form name="form1" action="https://epetitionen.bundestag.de/epet/registrieren.form.html" method="post">
+            <form name="form1" action="" method="post">
 
                 <p>信箱：<input type="text" name="email" value="ad@foxmail.com"></p>
-<!--                <div class="row">
-                    <div class="form__field-wrapper col-md-6">
-                        <label for="passwort">Passwort<span class="pwdPflicht">*</span> <a href="#" class="tooltip util-icon--before util-icon--epet-question tipso_style">
-                                <span class="sr-only">Info</span>
-                                <span class="tooltip-content">Ihr Passwort muss aus mindestens 8 Zeichen bestehen. Es muss mindestens je einen Groß- und Kleinbuchstaben sowie eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$) enthalten.</span>
-                            </a></label>
 
-                        <div id="passwort_div" style="padding-left: 0px;" class="strength_wrapper col-md-12"><input autocomplete="off" type="password" id="passwort" class="strength_input" value=""><input type="text" class="strength_input" name="passwort" style="display:none"><div class="strength_meter"><div class="veryweak"><p>very weak</p></div></div><div class="pswd_info" style="display: none;">             <h4>Voraussetzungen zur Wahl Ihres Passworts:</h4>             <ul>             <li data-criterion="capital" class="invalid">mindestens einen Großbuchstaben</li>             <li data-criterion="lowercase" class="valid">mindestens einen Kleinbuchstaben</li>             <li data-criterion="number" class="invalid">mindestens eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$)</li>             <li data-criterion="length" class="invalid">mindestens 8 Zeichen</li>             </ul>             </div></div>
-
-                    </div>
-
-                    <div class="form__field-wrapper col-md-6">
-                        <label for="passwort_wiederholen">Passwort wiederholen<span class="pwdPflicht">*</span></label>
-                        <div id="passwort_wiederholen_div" style="padding-right: 0px;" class="strength_wrapper col-md-12"><input autocomplete="off" type="password" id="passwort_wiederholen" class="strength_input" value=""><input type="text" class="strength_input" name="passwort_wiederholen" style="display:none"><div class="strength_meter"><div><p></p></div></div><div class="pswd_info" style="display: none;">             <h4>Voraussetzungen zur Wahl Ihres Passworts:</h4>             <ul>             <li data-criterion="capital" class="valid">mindestens einen Großbuchstaben</li>             <li data-criterion="lowercase" class="valid">mindestens einen Kleinbuchstaben</li>             <li data-criterion="number" class="valid">mindestens eine Ziffer oder ein Sonderzeichen (z.B. _#@*+?!-$)</li>             <li data-criterion="length" class="invalid">mindestens 8 Zeichen</li>             </ul>             </div></div>
-
-
-                    </div>
-                </div>
--->                <p>密碼：<input type="password" name="passwort" value="Abc12345">&nbsp;確認密碼：<input type="password" name="passwort_wiederholen" value="Abc12345"></p>
+                <p>密碼：<input type="password" name="passwort" value="Abc12345">
+                                        &nbsp;確認密碼：<input type="password" name="passwort_wiederholen" value="Abc12345"></p>
                 <div class="warning">
                     <p>*您的密碼必須至少8個字符長</p>
                     <p>*它必須至少包含一個大寫和小寫字母以及一個數字或特殊字符（例如_＃@ * + ?!-$）</p>
@@ -571,12 +555,12 @@ $timestamp2 = $timestamp + 3;
                 </select>
                 <p>郵遞區號：<input size="5" type="text" name="plz" value="900">&nbsp;
                 <p>縣市：<input type="text"size="30" name="ort" value="花蓮市">&nbsp;</p>
-                <p>街道：<input type="text"size="50" name="str_nr" value="北門路一段387巷18號" ></p>
+                <p>街道、門牌號碼：<input type="text"size="50" name="str_nr" value="北門路一段387巷18號" ></p>
                 <p>----------------------</p>
                 <p><input type="checkbox" name="datenschutz_ok" value="1">我已經閱讀並理解了隱私政策</p>
                 <p> <input type="checkbox" name="nutzungsbed_ok" value="1">我同意使用條款</p>
                 <p>----------------------</p>
-                <input type="hidden" name="btAbsendenMitRegistrieren" value="Jetzt registrieren">
+<!--                <input type="hidden" name="btAbsendenMitRegistrieren" value="Jetzt registrieren">-->
                 <input type="hidden" name="_charset_" value="UTF-8">
                 <input type="hidden" name="sectimestamp" value="<?=$timestamp2?>">
                 <input type="hidden" name="secinvisible" value="">
@@ -585,7 +569,7 @@ $timestamp2 = $timestamp + 3;
                 <input type="hidden" name="clearPwdWdhlIfEmpty" value="">
                 <input type="hidden" name="sectimestamp" value="<?=$timestamp?>">
                 <input type="hidden" name="secinvisible" value="">
-                <p><input type="submit" name="submit" value="送出">
+                <button type="submit" name="btAbsendenMitRegistrieren" value="Jetzt registrieren">送出</button>
                     <style>
                         input {padding:5px 15px; background:#DDDDDD; border:0 none;
                             cursor:pointer;
@@ -594,7 +578,7 @@ $timestamp2 = $timestamp + 3;
                             border-radius: 5px; }
                     </style>
                     <style>
-                        input {
+                         button {
                             padding:5px 15px;
                             background:	#DDDDDD;
                             border:0 none;f
@@ -611,31 +595,31 @@ $timestamp2 = $timestamp + 3;
 </body>
 </html>
 <?php
-if (isset($_POST['submit'])) {
-	unset($_POST['submit']);
-	$_POST['passwort_wiederholen'] = $_POST['passwort'];
-	$_POST['telefon'] = '';
-	$_POST['anrede'] = '';
-	$_POST['titel'] = '';
-	$_POST['coadresse'] = '';
-	$_POST['organisation'] = '';
-	$_POST['telefon'] = '';
-	foreach ($_POST as $k => $v) {
-		$_POST[$k] = urlencode($v);
-	}
-	var_dump($_POST);
-	$params = $_POST;
-	$params = http_build_query($params, null, '&');
-	$ch = curl_init();
-
-	curl_setopt($ch, CURLOPT_URL, "https://epetitionen.bundestag.de/epet/registrieren.form.html");
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Origin: https://epetitionen.bundestag.de', 'Content-Type: application/x-www-form-urlencoded', 'Referer: https://epetitionen.bundestag.de/content/epet/registrieren.html'));
-
-	$result = curl_exec($ch);
-	var_dump($result);
+if (isset($_POST['btAbsendenMitRegistrieren'])) {
+    $_POST['passwort_wiederholen'] = $_POST['passwort'];
+    $_POST['telefon'] = '';
+    $_POST['anrede'] = '';
+    $_POST['titel'] = '';
+    $_POST['coadresse'] = '';
+    $_POST['organisation'] = '';
+    $_POST['telefon'] = '';
+    foreach ($_POST as $k => $v) {
+        $_POST[$k] = urlencode($v);
+    }
+    $_POST['email'] = urldecode($_POST['email']);
+    var_dump($_POST);
+    $params = $_POST;
+//    $params = http_build_query($params, null, '&');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://epetitionen.bundestag.de/epet/registrieren.form.html");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, TRUE);
+    curl_setopt($ch, CURLOPT_NOBODY, FALSE);
+//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Cookie: renderid=s070058; SERVERID=a5d224cfdd198ec217a58a790d4b91a78b5bd189; JSESSIONID=gejj65v09e3o1qjdoars4g41p'));
+    $result = curl_exec($ch);
+        ($result);
 
 }

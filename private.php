@@ -1,18 +1,26 @@
 <?php
 /*
 Datenschutz
-Datenschutzhinweise
-zum Einreichen, Mitzeichnen und Diskutieren von Petitionen
-auf der Internetplattform des Petitionsausschusses
+Datenschutzhinweise zum Einreichen, Mitzeichnen und Diskutieren von Petitionen auf der Internetplattform des Petitionsausschusses
+
+data protection
+Privacy Policy
+for submitting, co-signing and discussing petitions
+on the internet platform of the Petitions Committee
 
 
 Diese Datenschutzhinweise informieren Sie über die Verarbeitung Ihrer personenbezogenen Daten im Rahmen der Nutzung der Internetplattform für elektronische Petitionen (im Folgenden „System E-Petitionen“) durch die Verwaltung des Deutschen Bundestages und durch mit der Bereitstellung des Angebots beauftragte Dienstleister (Hoster). Die Datenschutzhinweise versetzen Sie in die Lage, über den Umgang mit Ihren personenbezogenen Daten informiert zu entscheiden.
 
 Bezüglich der in den Datenschutzhinweisen verwendeten Fachbegriffe wird auf die entsprechenden Definitionen im Art. 4 der Datenschutzgrundverordnung (DSGVO) verwiesen.
 
-Verantwortlicher für die Datenverarbeitung
+Verantwortlicher für die Datenverarbeitung ist der Deutsche Bundestag, den Sie unter folgenden Kontaktdaten erreichen:
 
-ist der Deutsche Bundestag, den Sie unter folgenden Kontaktdaten erreichen:
+This privacy policy informs you about the processing of your personal data in the context of the use of the Internet platform for electronic petitions (hereinafter "system e-petitions") by the administration of the German Bundestag and by commissioned with the provision of the service provider (hoster). The privacy policy puts you in the position to decide on the handling of your personal data.
+
+With regard to the technical terms used in the data protection guidelines, reference is made to the corresponding definitions in Article 4 of the General Data Protection Regulation (GDPR).
+
+Responsible for the data processing is the German Bundestag, which you reach under the following contact data:
+
 
 Deutscher Bundestag
 Platz der Republik 1
@@ -26,11 +34,25 @@ Zwecke und Rechtsgrundlagen der Datenverarbeitung
 
 Die von Ihnen mitgeteilten Daten verarbeiten wir nur im jeweils dafür erforderlichen Umfang und zu folgenden Zwecken:
 
+German Bundestag
+Republic Square 1
+11011 Berlin
+Phone: +49 30 227-0
+E-Mail: mail@bundestag.de
 
+The official data protection officer can be reached at the postal address mentioned above, with the addition "To the official data protection officer", the telephone number mentioned above or at datenschutz.bdb@bundestag.de.
+
+Purposes and legal bases of data processing
+
+We process the data you have provided only to the extent required and for the following purposes:
 
 Durchführung des Petitionsverfahrens nach Art. 17 Grundgesetz
 Zurverfügungstellung und sicherer Betrieb des Systems E-Petitionen
 Kommunikationszwecke (z. B. Nutzeranfragen)
+
+Carrying out the petitions procedure according to Art. 17 of the Basic Law
+Provision and safe operation of the system e-petitions
+Communication purposes (eg user requests)
 
 
 Eine Übermittlung Ihrer personenbezogenen Daten an staatliche Einrichtungen und Behörden (insbesondere an die zuständigen Bundesministerien und sonstige der Kontrolle des Bundes unterliegende Stellen) und ggf. auch an Landtage oder das Europäische Parlament erfolgt nur im jeweils für die Bearbeitung Ihrer Eingabe erforderlichen Umfang im Rahmen des Petitionsverfahrens. Dies gilt auch, wenn Sie Eingaben zu ehemals staatlichen Unternehmen wie z. B. Deutsche Post AG oder Deutsche Bahn AG einreichen.
