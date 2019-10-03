@@ -607,7 +607,6 @@ if (isset($_POST['btAbsendenMitRegistrieren'])) {
         $_POST[$k] = urlencode($v);
     }
     $_POST['email'] = urldecode($_POST['email']);
-    var_dump($_POST);
     $params = $_POST;
 //    $params = http_build_query($params, null, '&');
     $ch = curl_init();
@@ -620,6 +619,8 @@ if (isset($_POST['btAbsendenMitRegistrieren'])) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Cookie: renderid=s070058; SERVERID=a5d224cfdd198ec217a58a790d4b91a78b5bd189; JSESSIONID=gejj65v09e3o1qjdoars4g41p'));
     $result = curl_exec($ch);
-        ($result);
+        var_dump($result);
 
 }
+//失敗：https://epetitionen.bundestag.de/content/epet/registrieren.html"
+//成功：https://epetitionen.bundestag.de/content/epet/registrieren.danke.html
